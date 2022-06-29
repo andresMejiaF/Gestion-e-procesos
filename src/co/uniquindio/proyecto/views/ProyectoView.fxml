@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.proyecto.views.CRUDProyectoController">
+   <children>
+      <TabPane prefHeight="500.0" prefWidth="700.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Gestor Procesos">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #85929E;">
+                     <children>
+                        <TableView fx:id="ListaProcesos" layoutX="14.0" layoutY="207.0" prefHeight="250.0" prefWidth="300.0" style="-fx-border-color: #000000; -fx-background-color: #D4E6F1;">
+                          <columns>
+                            <TableColumn fx:id="idP" prefWidth="75.0" text="ID" />
+                            <TableColumn fx:id="nombreP" prefWidth="224.0" text="Nombre proceso" />
+                          </columns>
+                        </TableView>
+                        <Label layoutX="14.0" layoutY="184.0" text="Tabla de procesos">
+                           <font>
+                              <Font name="Sitka Banner Bold Italic" size="18.0" />
+                           </font></Label>
+                        <Separator layoutX="-3.0" layoutY="181.0" prefHeight="1.0" prefWidth="710.0" />
+                        <Separator layoutX="323.0" layoutY="-3.0" orientation="VERTICAL" prefHeight="480.0" prefWidth="5.0" />
+                        <Label layoutX="14.0" layoutY="6.0" text="Crear proceso">
+                           <font>
+                              <Font name="Sitka Banner Bold Italic" size="18.0" />
+                           </font></Label>
+                        <Button layoutX="11.0" layoutY="141.0" mnemonicParsing="false" onAction="#crearProceso" prefHeight="25.0" prefWidth="298.0" style="-fx-border-color: #000000;" text="Crear proceso">
+                           <font>
+                              <Font name="Rockwell" size="12.0" />
+                           </font></Button>
+                        <Label layoutX="335.0" layoutY="6.0" text="Modificar nombre o ID de proceso">
+                           <font>
+                              <Font name="Sitka Banner Bold Italic" size="18.0" />
+                           </font></Label>
+                        <Button layoutX="340.0" layoutY="141.0" mnemonicParsing="false" onAction="#modificarProceso" prefHeight="25.0" prefWidth="343.0" style="-fx-border-color: #000000;" text="Modificar informacion del proceso">
+                           <font>
+                              <Font name="Rockwell" size="12.0" />
+                           </font></Button>
+                        <Label layoutX="330.0" layoutY="184.0" text="Servicios">
+                           <font>
+                              <Font name="Sitka Banner Bold Italic" size="18.0" />
+                           </font></Label>
+                        <Label layoutX="336.0" layoutY="207.0" text="Consultar tiempo de duracion de un proceso">
+                           <font>
+                              <Font name="Sitka Banner" size="15.0" />
+                           </font></Label>
+                        <Label layoutX="336.0" layoutY="227.0" text="Seleccione el proceso:">
+                           <font>
+                              <Font name="Sitka Banner" size="15.0" />
+                           </font></Label>
+                        <ComboBox fx:id="cbProcTiempo" layoutX="338.0" layoutY="258.0" prefHeight="0.0" prefWidth="334.0" promptText="Seleccione el proceso a consultar" style="-fx-border-color: #000000;" />
+                        <Button layoutX="336.0" layoutY="299.0" mnemonicParsing="false" onAction="#consultarTiempoProceso" prefHeight="25.0" prefWidth="336.0" style="-fx-border-color: #000000;" text="Consultar el tiempo de duracion">
+                           <font>
+                              <Font name="Rockwell" size="12.0" />
+                           </font></Button>
+                        <GridPane layoutX="336.0" layoutY="30.0" prefHeight="101.0" prefWidth="354.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="172.0" minWidth="10.0" prefWidth="130.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="224.0" minWidth="10.0" prefWidth="224.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Proceso a modificar:">
+                                 <font>
+                                    <Font name="Sitka Banner" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Nombre del proceso:" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Sitka Banner" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label text="ID del proceso:" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Sitka Banner" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="tfModId" prefHeight="25.0" prefWidth="203.0" promptText="Nueva ID del proceso" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="tfModNombreProceso" prefHeight="25.0" prefWidth="203.0" promptText="Nuevo nombre del proceso" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <ComboBox fx:id="cbModProces" prefHeight="25.0" prefWidth="225.0" promptText="Seleccione el proceso" style="-fx-border-color: #000000;" GridPane.columnIndex="1" />
+                           </children>
+                        </GridPane>
+                        <GridPane layoutX="11.0" layoutY="36.0" prefHeight="90.0" prefWidth="298.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="151.0" minWidth="10.0" prefWidth="123.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="191.0" minWidth="10.0" prefWidth="175.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Nombre del proceso:">
+                                 <font>
+                                    <Font name="Sitka Banner" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label text="ID del proceso:" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Sitka Banner" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="tfNombreProceso" prefHeight="25.0" prefWidth="134.0" promptText="Ingrese el nombre del proceso" style="-fx-border-color: #000000;" GridPane.columnIndex="1" />
+                              <TextField fx:id="tfId" prefHeight="0.0" prefWidth="191.0" promptText="Ingrese la ID del proceso" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Gestor Actividades">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #85929E;">
+                     <children>
+                        <Button layoutX="5.0" layoutY="224.0" mnemonicParsing="false" onAction="#crearActividad" prefHeight="25.0" prefWidth="338.0" style="-fx-border-color: #000000;" text="Crear actividad">
+                           <font>
+                              <Font name="Rockwell" size="12.0" />
+                           </font></Button>
+                        <TableView fx:id="ListaActividades" layoutX="6.0" layoutY="257.0" prefHeight="207.0" prefWidth="337.0" style="-fx-border-color: #000000; -fx-background-color: #D4E6F1;">
+                          <columns>
+                            <TableColumn fx:id="nombreA" prefWidth="84.0" text="Nombre" />
+                            <TableColumn fx:id="descrA" prefWidth="163.0" text="Descripcion" />
+                              <TableColumn fx:id="obligaA" prefWidth="85.0" text="ObligatoriaS" />
+                          </columns>
+                        </TableView>
+                        <Separator layoutX="348.0" layoutY="-3.0" orientation="VERTICAL" prefHeight="480.0" prefWidth="0.0" />
+                        <Button layoutX="266.0" layoutY="194.0" mnemonicParsing="false" onAction="#update" prefHeight="25.0" prefWidth="77.0" style="-fx-border-color: #000000;" text="Actualizar">
+                           <font>
+                              <Font name="Rockwell" size="12.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="361.0" layoutY="14.0" text="Modificar actividad">
+                           <font>
+                              <Font name="Sitka Banner Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="361.0" layoutY="95.0" text="Nombre actividad:">
+                           <font>
+                              <Font name="Sitka Banner" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="361.0" layoutY="125.0" text="Descripcion:">
+                           <font>
+                              <Font name="Sitka Banner" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="361.0" layoutY="155.0" text="¿Actividad obligatoria?">
+                           <font>
+                              <Font name="Sitka Banner" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="361.0" layoutY="35.0" text="Proceso que contiene la actividad:">
+                           <font>
+                              <Font name="Sitka Banner" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="361.0" layoutY="65.0" text="Actividad a modificar:">
+                           <font>
+                              <Font name="Sitka Banner" size="14.0" />
+                           </font></Label>
+                        <ComboBox fx:id="cbProceModAct" layoutX="550.0" layoutY="31.0" prefHeight="25.0" prefWidth="136.0" style="-fx-border-color: #000000;" />
+                        <ComboBox fx:id="cbActModAct" layoutX="480.0" layoutY="61.0" prefHeight="25.0" prefWidth="124.0" style="-fx-border-color: #000000;" />
+                        <TextField fx:id="tfNuevoNomAct" layoutX="467.0" layoutY="91.0" prefHeight="25.0" prefWidth="218.0" promptText="Nuevo nombre de la actividad" style="-fx-border-color: #000000;" />
+                        <TextField fx:id="tfNuevaDescAct" layoutX="435.0" layoutY="121.0" prefHeight="25.0" prefWidth="250.0" promptText="Nueva descripcion de la actividad" style="-fx-border-color: #000000;" />
+                        <Button layoutX="361.0" layoutY="181.0" mnemonicParsing="false" onAction="#modificarActividad" prefHeight="25.0" prefWidth="323.0" style="-fx-border-color: #000000;" text="Modificar informacion de la actividad">
+                           <font>
+                              <Font name="Rockwell" size="12.0" />
+                           </font></Button>
+                        <ComboBox fx:id="cbObligaMod" layoutX="492.0" layoutY="151.0" prefHeight="25.0" prefWidth="192.0" style="-fx-border-color: #000000;" />
+                        <Button layoutX="610.0" layoutY="61.0" mnemonicParsing="false" onAction="#updateModAct" prefHeight="25.0" prefWidth="74.0" style="-fx-border-color: #000000;" text="Actualizar" />
+                        <Separator layoutX="351.0" layoutY="221.0" prefHeight="4.0" prefWidth="351.0" />
+                        <Label layoutX="354.0" layoutY="227.0" text="Servicios">
+                           <font>
+                              <Font name="Sitka Banner Bold Italic" size="16.0" />
+                           </font></Label>
+                        <Label layoutX="354.0" layoutY="243.0" text="Ingrese el nombre de la actividad a buscar:">
+                           <font>
+                              <Font name="Sitka Banner" size="14.0" />
+                           </font></Label>
+                        <TextField fx:id="actividadBuscar" layoutX="360.0" layoutY="267.0" prefHeight="25.0" prefWidth="325.0" promptText="Ingrese el nombre LITERAL del proceso a buscar" style="-fx-border-color: #000000;" />
+                        <Button layoutX="361.0" layoutY="298.0" mnemonicParsing="false" onAction="#BuscarActividad" prefHeight="25.0" prefWidth="324.0" style="-fx-border-color: #000000;" text="Buscar actividad">
+                           <font>
+                              <Font name="Rockwell" size="12.0" />
+                           </font></Button>
+                        <Separator layoutX="351.0" layoutY="329.0" prefHeight="4.0" prefWidth="351.0" />
+                        <Label layoutX="359.0" layoutY="333.0" text="Intercambiar actividades:">
+                           <font>
+                              <Font name="Sitka Banner Bold Italic" size="16.0" />
+                           </font></Label>
+                        <Label layoutX="360.0" layoutY="384.0" text="Actividad 1:">
+                           <font>
+                              <Font name="Sitka Banner" size="14.0" />
+                           </font></Label>
+                        <Button layoutX="355.0" layoutY="440.0" mnemonicParsing="false" onAction="#intercambiarCompleto" prefHeight="25.0" prefWidth="155.0" style="-fx-border-color: #000000;" text="Intercambiar completo">
+                           <font>
+                              <Font name="Rockwell" size="12.0" />
+                           </font></Button>
+                        <Label layoutX="360.0" layoutY="415.0" text="Actividad 2:">
+                           <font>
+                              <Font name="Sitka Banner" size="14.0" />
+                           </font></Label>
+                        <ComboBox fx:id="cbInterAct2" layoutX="427.0" layoutY="411.0" prefHeight="25.0" prefWidth="259.0" style="-fx-border-color: #000000;" />
+                        <ComboBox fx:id="cbInterAct1" layoutX="427.0" layoutY="380.0" prefHeight="25.0" prefWidth="258.0" style="-fx-border-color: #000000;" />
+                        <Label layoutX="359.0" layoutY="355.0" prefHeight="17.0" prefWidth="124.0" text="Pertenecen al proceso:">
+                           <font>
+                              <Font name="Sitka Banner" size="14.0" />
+                           </font></Label>
+                        <ComboBox fx:id="cbInterProc" layoutX="481.0" layoutY="351.0" prefHeight="25.0" prefWidth="138.0" style="-fx-border-color: #000000;" />
+                        <Button layoutX="515.0" layoutY="440.0" mnemonicParsing="false" onAction="#intercambiarSinTareas" prefHeight="25.0" prefWidth="171.0" style="-fx-border-color: #000000;" text="Intercambiar sin tareas">
+                           <font>
+                              <Font name="Rockwell" size="12.0" />
+                           </font></Button>
+                        <Button layoutX="622.0" layoutY="351.0" mnemonicParsing="false" onAction="#updateIntercambiar" prefHeight="25.0" prefWidth="63.0" style="-fx-border-color: #000000;" text="Actualizar">
+                           <font>
+                              <Font name="Rockwell" size="12.0" />
+                           </font></Button>
+                        <GridPane layoutX="7.0" layoutY="12.0" prefHeight="181.0" prefWidth="335.0">
+                          <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="161.0" minWidth="10.0" prefWidth="130.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="209.0" minWidth="10.0" prefWidth="205.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label prefHeight="18.0" prefWidth="112.0" text="Crear actividad">
+                                 <font>
+                                    <Font name="Sitka Banner Bold Italic" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Nombre actividad:" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Sitka Banner" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Descripcion:" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Sitka Banner" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="¿Actividad obligatoria?" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Sitka Banner" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Pertenece al proceso de:" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Sitka Banner" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Agregar al..." GridPane.rowIndex="5">
+                                 <font>
+                                    <Font name="Sitka Banner" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="tfNombreAct" prefHeight="25.0" prefWidth="215.0" promptText="Ingrese el nombre de la actividad" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="tfDescripAct" prefHeight="25.0" prefWidth="239.0" promptText="Ingrese una descripcion para la actividad" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <ComboBox fx:id="cbObligatoria" prefHeight="25.0" prefWidth="210.0" promptText="Seleccione si es o no obligatoria" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <ComboBox fx:id="cbPerteProce" prefHeight="25.0" prefWidth="232.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <ComboBox fx:id="cbAgregarAl" prefHeight="25.0" prefWidth="238.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                           </children>
+                        </GridPane>
+                        <Label layoutX="7.0" layoutY="199.0" text="Esta precedida por:">
+                           <font>
+                              <Font name="Sitka Banner" size="14.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="cbPrecedidaPor" layoutX="137.0" layoutY="194.0" prefHeight="25.0" prefWidth="125.0" style="-fx-border-color: #000000;" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Gestor Tareas">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #85929E;">
+                     <children>
+                        <Label layoutX="14.0" layoutY="6.0" text="Crear Tareas">
+                           <font>
+                              <Font name="Sitka Banner Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="46.0" text="Seleccione el proceso:">
+                           <font>
+                              <Font name="Sitka Banner" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="11.0" layoutY="110.0" text="Seleccione la actividad:">
+                           <font>
+                              <Font name="Sitka Banner" size="14.0" />
+                           </font></Label>
+                        <ComboBox fx:id="cbProcTarea" layoutX="12.0" layoutY="63.0" prefHeight="25.0" prefWidth="307.0" style="-fx-border-color: #000000;" />
+                        <ComboBox fx:id="cbActivTarea" layoutX="11.0" layoutY="129.0" prefHeight="25.0" prefWidth="306.0" style="-fx-border-color: #000000;" />
+                        <Button layoutX="136.0" layoutY="96.0" mnemonicParsing="false" onAction="#updateTarCrear" prefHeight="25.0" prefWidth="182.0" style="-fx-border-color: #000000;" text="Actualizar" />
+                        <Label layoutX="14.0" layoutY="26.0" text="Primero, requerimos que seleccione la actividad">
+                           <font>
+                              <Font name="Sitka Banner" size="14.0" />
+                           </font></Label>
+                        <Button layoutX="9.0" layoutY="363.0" mnemonicParsing="false" onAction="#agregarTarea" prefHeight="25.0" prefWidth="307.0" style="-fx-border-color: #000000;" text="Crear tarea" />
+                        <Separator layoutX="-7.0" layoutY="400.0" prefHeight="4.0" prefWidth="336.0" />
+                        <Separator layoutX="327.0" layoutY="-6.0" orientation="VERTICAL" prefHeight="481.0" prefWidth="8.0" />
+                        <Label layoutX="339.0" layoutY="6.0" text="Servicios">
+                           <font>
+                              <Font name="Sitka Banner Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="342.0" layoutY="31.0" text="Consultar tarea:">
+                           <font>
+                              <Font name="Sitka Banner" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="341.0" layoutY="55.0" text="Ingrese la descripcion de la tarea a buscar:">
+                           <font>
+                              <Font name="Sitka Banner" size="14.0" />
+                           </font></Label>
+                        <TextField fx:id="tfTareaBuscar" layoutX="340.0" layoutY="75.0" prefHeight="25.0" prefWidth="345.0" promptText="Ingrese la descripcion LITERAL de la tarea a buscar" style="-fx-border-color: #000000;" />
+                        <Label layoutX="340.0" layoutY="109.0" text="Metodo de busqueda:">
+                           <font>
+                              <Font name="Sitka Banner" size="14.0" />
+                           </font></Label>
+                        <ComboBox fx:id="cbMetodoTar" layoutX="339.0" layoutY="131.0" prefHeight="25.0" prefWidth="347.0" style="-fx-border-color: #000000;" />
+                        <Label layoutX="340.0" layoutY="167.0" text="Proceso en el que esta la actividad de control">
+                           <font>
+                              <Font name="Sitka Banner" size="14.0" />
+                           </font></Label>
+                        <ComboBox fx:id="cbBuscarTarPro" layoutX="339.0" layoutY="192.0" prefHeight="25.0" prefWidth="230.0" style="-fx-border-color: #000000;" />
+                        <Button layoutX="337.0" layoutY="297.0" mnemonicParsing="false" onAction="#buscarTarea" prefHeight="25.0" prefWidth="345.0" style="-fx-border-color: #000000;" text="Consultar tarea" />
+                        <Label layoutX="340.0" layoutY="227.0" text="Actividad de control">
+                           <font>
+                              <Font name="Sitka Banner" size="14.0" />
+                           </font></Label>
+                        <ComboBox fx:id="cbBuscarTarAct" layoutX="339.0" layoutY="251.0" prefHeight="25.0" prefWidth="347.0" style="-fx-border-color: #000000;" />
+                        <Button layoutX="577.0" layoutY="192.0" mnemonicParsing="false" onAction="#updateTarBuscar" prefHeight="25.0" prefWidth="105.0" style="-fx-border-color: #000000;" text="Actualizar" />
+                        <GridPane layoutX="11.0" layoutY="156.0" prefHeight="201.0" prefWidth="306.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="154.0" minWidth="10.0" prefWidth="121.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="201.0" minWidth="10.0" prefWidth="185.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Agregar despues de: " GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Sitka Banner" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Donde a agregar:" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Sitka Banner" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Duracion en minutos:" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Sitka Banner" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="¿Tarea obligatoria?" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Sitka Banner" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Descripcion:">
+                                 <font>
+                                    <Font name="Sitka Banner" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="tfDescTarea" prefHeight="25.0" prefWidth="221.0" promptText="Ingrese descripcion de tarea" style="-fx-border-color: #000000;" GridPane.columnIndex="1" />
+                              <ComboBox fx:id="cbObligTarea" prefHeight="25.0" prefWidth="205.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="tfDuraTarea" prefHeight="25.0" prefWidth="208.0" promptText="30s = 0.5" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <ComboBox fx:id="cbDondeAgTarea" prefHeight="25.0" prefWidth="209.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="tfPosAgTarea" prefHeight="25.0" prefWidth="184.0" promptText="Posicion de la cola donde agregar esta tarea" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                           </children>
+                        </GridPane>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
